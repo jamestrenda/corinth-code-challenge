@@ -1,0 +1,41 @@
+{
+  "name": "corinth-code-challenge",
+  "version": "1.0.0",
+  "description": "A coding challenge for Lifeway.com",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest --watchAll --verbose --coverage",
+    "test:ci": "jest --ci"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-icons": "^4.7.1",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-typescript": "^7.20.0",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "13.2.0",
+    "@testing-library/user-event": "14.2.0",
+    "@types/react": "18.0.9",
+    "@types/styled-components": "^5.1.26",
+    "babel-loader": "^9.1.0",
+    "babel-plugin-macros": "^3.1.0",
+    "jest": "28.1.0",
+    "jest-environment-jsdom": "28.1.0",
+    "tailwindcss": "^3.2.4",
+    "twin.macro": "^3.0.1",
+    "typescript": "4.6.4"
+  },
+  "babelMacros": {
+    "twin": {
+      "preset": "styled-components"
+    }
+  }
+}
