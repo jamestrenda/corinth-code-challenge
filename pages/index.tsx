@@ -69,6 +69,14 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <footer>
+        <figure tw="text-3xl font-serif italic text-gray-500 text-center mt-12">
+          <blockquote tw="mb-2">
+            <p>"I find your lack of faith disturbing."</p>
+          </blockquote>
+          <figcaption>&mdash; Darth Vader</figcaption>
+        </figure>
+      </footer>
     </div>
   );
 }
