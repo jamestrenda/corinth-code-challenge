@@ -1,31 +1,45 @@
 import Link from 'next/link';
 import tw from 'twin.macro';
 import { NavLink } from './navLink';
+import { getRomanNumeral } from '../utils/getRomanNumeral';
+import { fetchFilms } from 'lib/fetchFilms';
+import { useEffect, useState } from 'react';
 
 // TODO: add active link
+// TODO: type checking
+
+type Paths = {
+  id: string;
+  roman: string;
+};
 
 export const Nav = () => {
+  const [paths, setPaths] = useState<Paths[] | undefined>(undefined);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { results } = await fetchFilms();
+
+      const paths = results.map((film) => ({
+        id: film.episode_id.toString(),
+        roman: getRomanNumeral(film.episode_id) || '',
+      }));
+
+      setPaths(paths);
+    };
+    fetchData();
+  }, []);
+
   return (
     <nav>
       <ul tw="flex gap-8 font-bold text-gray-500 justify-center">
-        <NavLink>
-          <Link href="/films/1">I</Link>
-        </NavLink>
-        <NavLink>
-          <Link href="/films/2">II</Link>
-        </NavLink>
-        <NavLink>
-          <Link href="/films/3">III</Link>
-        </NavLink>
-        <NavLink>
-          <Link href="/films/4">IV</Link>
-        </NavLink>
-        <NavLink>
-          <Link href="/films/5">V</Link>
-        </NavLink>
-        <NavLink>
-          <Link href="/films/6">VI</Link>
-        </NavLink>
+        {paths
+          ?.sort((a, b) => Number(a.id) - Number(b.id))
+          .map(({ id, roman }) => (
+            <NavLink key={roman}>
+              <Link href={`/episodes/${id}`}>{roman.toUpperCase()}</Link>
+            </NavLink>
+          ))}
       </ul>
     </nav>
   );

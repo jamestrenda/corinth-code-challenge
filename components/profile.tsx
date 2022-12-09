@@ -3,7 +3,7 @@ import { ProfileSection } from './profileSection';
 import { ProfileSectionContent } from './profileSectionContent';
 import { ProfileSectionHeading } from './profileSectionHeading';
 
-export type ProfileProps = {
+export type Person = {
   name: string;
   height: string;
   mass: string;
@@ -17,7 +17,7 @@ export type ProfileProps = {
 
 // TODO: fade in each profile card
 
-export const Profile = (props: ProfileProps) => {
+export const Profile = (props: Person) => {
   const {
     name,
     height,
@@ -34,7 +34,9 @@ export const Profile = (props: ProfileProps) => {
 
   return (
     <div tw="text-white p-6 bg-gray-900 rounded-md">
-      <h2 tw="text-lg font-bold mb-4">{name}</h2>
+      <h2 tw="text-4xl italic text-gray-400 mb-4 font-serif [text-shadow: 5px 5px rgba(0,0,0,.5)]">
+        {name}
+      </h2>
       <ProfileSection>
         <ProfileSectionHeading heading="About Me" />
         <ProfileSectionContent>
@@ -52,8 +54,10 @@ export const Profile = (props: ProfileProps) => {
               <strong>DOB:</strong> {birth_year}
             </li>
             <li tw="lg:col-span-2">
-              <strong>Species:</strong>{' '}
-              {species.length ? species[0] : 'Homo Sapien'}
+              <>
+                <strong>Species:</strong>{' '}
+                {species.length ? species[0] : 'Homo Sapien'}
+              </>
             </li>
           </ul>
         </ProfileSectionContent>
