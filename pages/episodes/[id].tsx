@@ -1,8 +1,8 @@
 import { Directory } from '@/components/directory';
 import { Person } from '@/components/profile';
 import { GetStaticProps } from 'next';
-import filmData from 'data/films.json';
 import { fetchPeople } from 'lib/fetchPeople';
+import { fetchFilms } from 'lib/fetchFilms';
 
 export default function Episode({ characters }: { characters: Person[] }) {
   return <Directory characters={characters} />;
@@ -38,7 +38,8 @@ export const getStaticProps: GetStaticProps<{
 };
 
 export async function getStaticPaths() {
-  const paths = filmData.map((film) => ({
+  const { results } = await fetchFilms();
+  const paths = results.map((film) => ({
     params: {
       id: film.episode_id.toString(),
     },
