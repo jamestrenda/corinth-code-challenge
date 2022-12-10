@@ -1,4 +1,6 @@
 import tw from 'twin.macro';
+import { getHeightInFeetAndInches } from 'utils/getHeightInFeetAndInches';
+import { getWeightInPounds } from 'utils/getWeightInPounds';
 import { ProfileSection } from './profileSection';
 import { ProfileSectionContent } from './profileSectionContent';
 import { ProfileSectionHeading } from './profileSectionHeading';
@@ -42,10 +44,12 @@ export const Profile: React.FC<Person> = (props) => {
         <ProfileSectionContent>
           <ul tw="grid lg:grid-cols-2">
             <li>
-              <strong>Height:</strong> {height} ({height} cm)
+              <strong>Height:</strong>{' '}
+              {getHeightInFeetAndInches(Number(height))} ({height} cm)
             </li>
             <li>
-              <strong>Weight:</strong> {mass} ({mass} kg)
+              <strong>Weight:</strong> {getWeightInPounds(Number(mass))} ({mass}{' '}
+              kg)
             </li>
             <li>
               <strong>Hair Color:</strong> {hair_color}
