@@ -22,8 +22,5 @@ describe('utils', () => {
 
     result = getRomanNumeral(7);
     expect(result).toBe('vii');
-
-    result = getRomanNumeral(8);
-    expect(result).toBe(undefined);
   });
 });

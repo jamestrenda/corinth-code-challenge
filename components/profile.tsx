@@ -1,4 +1,5 @@
 import tw from 'twin.macro';
+import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
 import { getHeightInFeetAndInches } from 'utils/getHeightInFeetAndInches';
 import { getWeightInPounds } from 'utils/getWeightInPounds';
 import { ProfileSection } from './profileSection';
@@ -45,17 +46,24 @@ export const Profile: React.FC<Person> = (props) => {
           <ul tw="grid lg:grid-cols-2">
             <li>
               <strong>Height:</strong>{' '}
-              {getHeightInFeetAndInches(Number(height))} ({height} cm)
+              {getHeightInFeetAndInches(Number(height))}
             </li>
             <li>
-              <strong>Weight:</strong> {getWeightInPounds(Number(mass))} ({mass}{' '}
-              kg)
+              <strong>Weight:</strong> {getWeightInPounds(mass)}
             </li>
             <li>
-              <strong>Hair Color:</strong> {hair_color}
+              <strong>Hair Color:</strong>{' '}
+              {hair_color.includes(',')
+                ? hair_color
+                    .split(',')
+                    .map((color) => {
+                      return capitalizeFirstLetter(color.trim());
+                    })
+                    .join(', ')
+                : capitalizeFirstLetter(hair_color)}
             </li>
             <li>
-              <strong>DOB:</strong> {birth_year}
+              <strong>DOB:</strong> {capitalizeFirstLetter(birth_year)}
             </li>
             <li tw="lg:col-span-2">
               <>
