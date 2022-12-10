@@ -17,7 +17,7 @@ export type Person = {
 
 // TODO: fade in each profile card
 
-export const Profile = (props: Person) => {
+export const Profile: React.FC<Person> = (props) => {
   const {
     name,
     height,

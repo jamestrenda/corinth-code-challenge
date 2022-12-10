@@ -13,7 +13,7 @@ type Paths = {
   roman: string;
 };
 
-export const Nav = () => {
+export const Nav: React.FC = () => {
   const [paths, setPaths] = useState<Paths[] | undefined>(undefined);
 
   useEffect(() => {
@@ -27,7 +27,12 @@ export const Nav = () => {
 
       setPaths(paths);
     };
-    fetchData();
+    try {
+      fetchData();
+    } catch (error) {
+      // TODO: update app state with error
+      console.log({ error });
+    }
   }, []);
 
   return (

@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 import { Nav } from './nav';
 import { Search } from './search';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   return (
     <header>
       <h1 tw="text-yellow-400 font-bold text-2xl uppercase tracking-widest text-center mt-12">

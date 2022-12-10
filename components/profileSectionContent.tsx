@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import tw from 'twin.macro';
 
-export const ProfileSectionContent = ({
+export const ProfileSectionContent: React.FC<{ children: ReactNode }> = ({
   children,
 }: {
   children: ReactNode;
