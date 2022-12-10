@@ -7,8 +7,6 @@ export default function Home({ characters }: { characters: Person[] }) {
   return <Directory characters={characters} />;
 }
 
-// TODO: SWAPI only returns for 10 results per resource, so let's add a fetch more feature on scroll.
-
 export const getStaticProps: GetStaticProps<{
   characters: Person[];
 }> = async () => {
