@@ -1,10 +1,23 @@
 import { Profile, Person } from './profile';
 import tw from 'twin.macro';
+import { useContext } from 'react';
+import { AppContext } from './appStateProvider';
 
-export const Directory = ({ characters }: { characters: Person[] }) => {
+type Props = {
+  characters: Person[];
+};
+
+export const Directory: React.FC<Props> = ({ characters }) => {
+  const { state } = useContext(AppContext);
+  const { searchTerm } = state;
+
+  const filteredCharacters = characters.filter((character) =>
+    character.name.toLocaleLowerCase().includes(searchTerm)
+  );
+
   return (
     <div tw="mt-3 grid sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-5xl m-auto">
-      {characters.map((char) => (
+      {filteredCharacters.map((char) => (
         <Profile
           key={char.url}
           name={char.name}
