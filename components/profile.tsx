@@ -78,7 +78,7 @@ export const Profile: React.FC<Person> = (props) => {
           {starships.length ? (
             <p tw="[text-overflow: ellipsis] overflow-auto">
               {starships.map(
-                (ship, i) => `${ship}${i < starships.length - 1 && ', '}`
+                (ship, i) => `${ship}${i < starships.length - 1 ? ', ' : ''}`
               )}
             </p>
           ) : (
