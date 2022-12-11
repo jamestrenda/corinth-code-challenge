@@ -32,10 +32,11 @@ export const Profile: React.FC<Person> = (props) => {
     species,
     filmData,
     starships,
+    url,
   } = props;
 
   return (
-    <article tw="relative text-white p-6 bg-gray-900 rounded-md [content: ''] group-hover:[&:not(:hover)]:before:bg-black/50 before:h-full before:w-full before:absolute before:left-0 before:right-0 before:top-0 before:bottom-0 before:transition-all">
+    <article tw="relative text-white p-6 bg-gray-900 rounded-md [content: ''] lg:group-hover:[&:not(:hover)]:before:bg-black/50 before:h-full before:w-full before:absolute before:left-0 before:right-0 before:top-0 before:bottom-0 before:transition-all">
       <h2 tw="text-4xl italic text-gray-400 mb-4 font-serif [text-shadow: 5px 5px rgba(0,0,0,.5)]">
         {name}
       </h2>
@@ -78,7 +79,7 @@ export const Profile: React.FC<Person> = (props) => {
         <ProfileSectionContent>
           <ul>
             {filmData?.map(({ episode_id, title }) => (
-              <li key={episode_id}>{title}</li>
+              <li key={`${url}-${episode_id}`}>{title}</li>
             ))}
           </ul>
         </ProfileSectionContent>
