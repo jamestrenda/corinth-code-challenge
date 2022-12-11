@@ -9,6 +9,7 @@ const CustomStyles = createGlobalStyle({
     backgroundRepeat: 'repeat',
     backgroundSize: '500px',
     backgroundBlendMode: 'luminosity',
+    backgroundAttachment: 'fixed',
   },
   body: {
     ...tw`antialiased p-4 bg-[rgba(0,0,0,.3)] min-h-screen text-base`,
