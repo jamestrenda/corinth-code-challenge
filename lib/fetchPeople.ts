@@ -25,7 +25,11 @@ export const fetchPeople = async (): Promise<IPersonResource> => {
             return await res.json();
           })
         ).then((data) => {
-          return data.map(({ url, title }) => ({ url, title }));
+          return data.map(({ episode_id, title, url }) => ({
+            episode_id,
+            title,
+            url,
+          }));
         });
 
         // fetch species data

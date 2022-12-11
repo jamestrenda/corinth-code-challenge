@@ -32,6 +32,7 @@ export const Directory: React.FC<Props> = ({ characters }) => {
           filmData={char.filmData}
           films={char.films}
           starships={char.starships}
+          url={char.url}
         />
       ))}
     </div>
