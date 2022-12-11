@@ -7,5 +7,6 @@ export const getHeightInFeetAndInches = (heightInCm: number): string => {
   const inches = Math.round(heightInInches % 12);
 
   // Return the height in feet and inches as a string
-  return `${feet}' ${inches}"`;
+  // if the number of inches is 12, round up to the next foot
+  return inches === 12 ? `${feet + 1}' 0"` : `${feet}' ${inches}"`;
 };

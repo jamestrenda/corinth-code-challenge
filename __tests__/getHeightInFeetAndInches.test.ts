@@ -9,4 +9,8 @@ describe('utils', () => {
     const result = getHeightInFeetAndInches(100.5);
     expect(result).toBe(`3' 4"`);
   });
+  it('rounds to the nearest foot', () => {
+    const result = getHeightInFeetAndInches(182);
+    expect(result).toBe(`6' 0"`);
+  });
 });
