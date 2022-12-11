@@ -16,7 +16,10 @@ export const Directory: React.FC<Props> = ({ characters }) => {
   );
 
   return (
-    <div tw="mt-3 grid sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-6xl m-auto">
+    <div
+      tw="mt-3 grid sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-6xl m-auto"
+      className="group"
+    >
       {filteredCharacters.map((char) => (
         <Profile
           key={char.url}
