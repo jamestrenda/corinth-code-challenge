@@ -11,8 +11,9 @@ const CustomStyles = createGlobalStyle({
     backgroundBlendMode: 'luminosity',
   },
   body: {
-    ...tw`antialiased p-4 bg-[rgba(0,0,0,.3)] min-h-screen`,
+    ...tw`antialiased p-4 bg-[rgba(0,0,0,.3)] min-h-screen text-base`,
   },
+  input: { ...tw`text-[100%]` },
 });
 
 const GlobalStyles = () => (
