@@ -27,6 +27,7 @@ export const getStaticProps: GetStaticProps<{
       birth_year: char.birth_year,
       species: char.species,
       films: char.films,
+      filmData: char.filmData,
       starships: char.starships,
     })
   );

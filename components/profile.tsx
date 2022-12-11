@@ -1,3 +1,4 @@
+import { Film } from 'lib/fetchFilms';
 import tw from 'twin.macro';
 import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
 import { getHeightInFeetAndInches } from 'utils/getHeightInFeetAndInches';
@@ -12,9 +13,10 @@ export type Person = {
   mass: string;
   hair_color: string;
   birth_year: string;
-  species: Array<string>;
-  films: Array<string>;
-  starships: Array<string>;
+  species: string[];
+  starships: string[];
+  filmData: Film[];
+  films: string[];
   url?: string;
 };
 
@@ -28,12 +30,9 @@ export const Profile: React.FC<Person> = (props) => {
     hair_color,
     birth_year,
     species,
-    films,
+    filmData,
     starships,
   } = props;
-
-  // TODO: uppercase first letter of each prop
-  // TODO: convert height/weight values to relevant units (ft/in, lbs.)
 
   return (
     <div tw="text-white p-6 bg-gray-900 rounded-md">
@@ -78,8 +77,8 @@ export const Profile: React.FC<Person> = (props) => {
         <ProfileSectionHeading heading="Films Appeared In" />
         <ProfileSectionContent>
           <ul>
-            {films.map((film) => (
-              <li key={film}>{film}</li>
+            {filmData?.map(({ episode_id, title }) => (
+              <li key={episode_id}>{title}</li>
             ))}
           </ul>
         </ProfileSectionContent>

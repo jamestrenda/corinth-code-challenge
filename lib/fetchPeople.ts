@@ -16,15 +16,17 @@ export const fetchPeople = async (): Promise<IPersonResource> => {
     const data = await res.json();
 
     // intercept data and add film/species/starship data to each person...
-    const updatedPersonData = Promise.all(
+    const updatedPersonData = await Promise.all(
       data.results.map(async (person: Person) => {
         // fetch film data
-        const films = await Promise.all(
-          person.films.map(async (filmUrl) => {
-            const res = await fetch(filmUrl);
+        const filmData = await Promise.all(
+          person.films.map(async (film) => {
+            const res = await fetch(String(film));
             return await res.json();
           })
-        ).then((response) => response.map((data) => data.title));
+        ).then((data) => {
+          return data.map(({ url, title }) => ({ url, title }));
+        });
 
         // fetch species data
         const species = await Promise.all(
@@ -45,12 +47,14 @@ export const fetchPeople = async (): Promise<IPersonResource> => {
         // return the person with the updated data
         return {
           ...person,
-          films,
+          filmData,
           species,
           starships,
         };
       })
-    ).then((data) => results.push(...data));
+    );
+
+    results.push(...updatedPersonData);
 
     // store the results
     // make additional api calls for each remaining page (api limits response to 10 results each)

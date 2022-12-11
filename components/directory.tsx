@@ -26,6 +26,7 @@ export const Directory: React.FC<Props> = ({ characters }) => {
           hair_color={char.hair_color}
           birth_year={char.birth_year}
           species={char.species}
+          filmData={char.filmData}
           films={char.films}
           starships={char.starships}
         />
