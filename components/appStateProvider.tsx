@@ -1,4 +1,10 @@
-import React, { ChangeEventHandler, createContext, Dispatch } from 'react';
+import React, {
+  ChangeEventHandler,
+  createContext,
+  Dispatch,
+  Reducer,
+  useReducer,
+} from 'react';
 import { Person } from './profile';
 
 export type StateProps = {
@@ -15,11 +21,42 @@ const AppContext = createContext<AppContext>({
   state: { searchTerm: '', characters: [] },
 });
 
+export enum ReducerActionType {
+  SET_SEARCH_TERM,
+  SET_CHARACTERS,
+}
+
+export type ReducerAction = {
+  type: ReducerActionType;
+  payload?: any;
+};
+const reducer: Reducer<StateProps, ReducerAction> = (state, action) => {
+  switch (action.type) {
+    case ReducerActionType.SET_SEARCH_TERM: {
+      return { ...state, searchTerm: action.payload };
+    }
+    case ReducerActionType.SET_CHARACTERS: {
+      return { ...state, characters: action.payload };
+    }
+    default:
+      return state;
+  }
+};
+
 const AppProvider: React.FC<{
-  value: AppContext;
   children: React.ReactNode;
-}> = ({ value, children }) => {
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+}> = ({ children }) => {
+  const initialState = {
+    searchTerm: '',
+    characters: null,
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <AppContext.Provider value={{ state: { ...state }, dispatch }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 const AppConsumer = AppContext.Consumer;

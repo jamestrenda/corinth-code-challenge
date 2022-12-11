@@ -1,9 +1,7 @@
-import { ReducerActionType } from '@/pages/_app';
 import { ChangeEvent, useContext } from 'react';
+import { AppContext, ReducerActionType } from './appStateProvider';
 import tw from 'twin.macro';
-import { AppContext } from './appStateProvider';
 
-// TODO: implement search functionality
 // TODO: add hover/focus states to input
 export const Search: React.FC = () => {
   const { dispatch } = useContext(AppContext);
