@@ -35,7 +35,7 @@ export const Profile: React.FC<Person> = (props) => {
   } = props;
 
   return (
-    <div tw="text-white p-6 bg-gray-900 rounded-md">
+    <article tw="text-white p-6 bg-gray-900 rounded-md">
       <h2 tw="text-4xl italic text-gray-400 mb-4 font-serif [text-shadow: 5px 5px rgba(0,0,0,.5)]">
         {name}
       </h2>
@@ -93,6 +93,6 @@ export const Profile: React.FC<Person> = (props) => {
           )}
         </ProfileSectionContent>
       </ProfileSection>
-    </div>
+    </article>
   );
 };
