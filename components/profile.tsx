@@ -88,11 +88,7 @@ export const Profile: React.FC<Person> = (props) => {
         <ProfileSectionHeading heading="Starships Flown" />
         <ProfileSectionContent>
           {starships.length ? (
-            <p tw="[text-overflow: ellipsis] overflow-auto">
-              {starships.map(
-                (ship, i) => `${ship}${i < starships.length - 1 ? ', ' : ''}`
-              )}
-            </p>
+            <p tw="[text-overflow: ellipsis] overflow-auto">{starships}</p>
           ) : (
             'None'
           )}
