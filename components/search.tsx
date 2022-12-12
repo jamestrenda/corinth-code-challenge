@@ -17,7 +17,7 @@ export const Search: React.FC = () => {
   return (
     <div tw="max-w-lg m-auto">
       <input
-        tw="w-full text-center text-gray-400 p-4 my-4 bg-transparent border border-gray-900 rounded-full uppercase text-[100%] lg:text-xs tracking-widest"
+        tw="w-full text-center text-gray-400 p-4 my-4 bg-transparent border border-gray-900 rounded-full uppercase text-[100%] lg:text-xs tracking-widest focus:outline-none focus:ring-2 focus:ring-gray-900 focus:text-yellow-300"
         type="search"
         name="search"
         placeholder="Filter by name..."
