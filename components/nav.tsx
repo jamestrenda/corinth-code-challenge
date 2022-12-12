@@ -20,9 +20,11 @@ export const Nav: React.FC = () => {
   const [paths, setPaths] = useState<Paths[] | undefined>(undefined);
 
   useEffect(() => {
+    // when this component mounts, dynamically fetch films to set as paths for the nav
     const fetchData = async () => {
       const { results } = await fetchFilms();
 
+      // convert episode_id's to roman numerals
       const paths = results.map((film) => ({
         id: film.episode_id.toString(),
         roman: getRomanNumeral(film.episode_id) || '',
@@ -33,26 +35,29 @@ export const Nav: React.FC = () => {
     try {
       fetchData();
     } catch (error) {
-      // TODO: update app state with error
       console.log({ error });
     }
   }, []);
 
   return (
     <nav>
-      <ul tw="flex gap-8 font-bold text-gray-500 justify-center">
-        {paths
-          ?.sort((a, b) => Number(a.id) - Number(b.id))
-          .map(({ id, roman }) => (
-            <NavLink key={roman}>
-              <StyledActiveLink
-                activeClassName="active"
-                href={`/episodes/${id}`}
-              >
-                {roman.toUpperCase()}
-              </StyledActiveLink>
-            </NavLink>
-          ))}
+      <ul tw="flex gap-8 font-bold text-gray-500 justify-center uppercase">
+        {paths ? (
+          paths
+            .sort((a, b) => Number(a.id) - Number(b.id))
+            .map(({ id, roman }) => (
+              <NavLink key={roman}>
+                <StyledActiveLink
+                  activeClassName="active"
+                  href={`/episodes/${id}`}
+                >
+                  {roman}
+                </StyledActiveLink>
+              </NavLink>
+            ))
+        ) : (
+          <li tw="h-12 text-gray-500 font-bold"></li>
+        )}
       </ul>
     </nav>
   );
