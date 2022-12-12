@@ -45,7 +45,7 @@ export const Profile: React.FC<Person> = (props) => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}
-        tw="relative text-white p-6 bg-gray-900 rounded-md [content: ''] lg:group-hover:[&:not(:hover)]:before:bg-black/50 before:h-full before:w-full before:absolute before:left-0 before:right-0 before:top-0 before:bottom-0 before:transition-all"
+        tw="relative text-white p-6 bg-gray-900 rounded-md [content: ''] lg:group-hover:[&:not(:hover)]:before:bg-gray-900/50 before:h-full before:w-full before:absolute before:left-0 before:right-0 before:top-0 before:bottom-0 before:transition-all"
       >
         <h2 tw="text-4xl italic text-gray-400 mb-4 font-serif [text-shadow: 5px 5px rgba(0,0,0,.5)]">
           {name}
