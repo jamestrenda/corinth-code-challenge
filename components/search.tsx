@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 
 // TODO: add hover/focus states to input
 export const Search: React.FC = () => {
-  const { dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const handleSearch = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
 
@@ -22,6 +22,7 @@ export const Search: React.FC = () => {
         name="search"
         placeholder="Filter by name..."
         onChange={handleSearch}
+        value={state.searchTerm}
       />
     </div>
   );

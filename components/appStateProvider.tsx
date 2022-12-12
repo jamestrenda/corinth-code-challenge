@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router';
 import React, {
   ChangeEventHandler,
   createContext,
   Dispatch,
   Reducer,
+  useEffect,
   useReducer,
 } from 'react';
 import { Person } from './profile';
@@ -50,7 +52,15 @@ const AppProvider: React.FC<{
     searchTerm: '',
     characters: null,
   };
+
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { query } = useRouter();
+
+  useEffect(() => {
+    if (query.id) {
+      dispatch({ type: ReducerActionType.SET_SEARCH_TERM, payload: '' });
+    }
+  }, [query]);
 
   return (
     <AppContext.Provider value={{ state: { ...state }, dispatch }}>
