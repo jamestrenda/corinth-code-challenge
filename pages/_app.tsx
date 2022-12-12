@@ -3,6 +3,7 @@ import GlobalStyles from '@/styles/GlobalStyles';
 import { Layout } from '@/components/layout';
 import { AppProvider } from '@/components/appStateProvider';
 import Head from 'next/head';
+import ErrorBoundary from '@/components/error';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,7 +19,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       <AppProvider>
         <Layout>
-          <Component {...pageProps} />
+          <ErrorBoundary>
+            <Component {...pageProps} />
+          </ErrorBoundary>
         </Layout>
       </AppProvider>
     </>
