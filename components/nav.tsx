@@ -41,7 +41,7 @@ export const Nav: React.FC = () => {
 
   return (
     <nav>
-      <ul tw="flex gap-8 font-bold text-gray-500 justify-center uppercase">
+      <ul tw="flex gap-8 font-bold text-gray-500 justify-center items-center uppercase">
         {paths ? (
           paths
             .sort((a, b) => Number(a.id) - Number(b.id))
@@ -56,7 +56,14 @@ export const Nav: React.FC = () => {
               </NavLink>
             ))
         ) : (
-          <li tw="h-12 text-gray-500 font-bold"></li>
+          <>
+            <li tw="h-12 grid place-items-center animate-pulse">i</li>
+            <li tw="h-12 grid place-items-center animate-pulse">ii</li>
+            <li tw="h-12 grid place-items-center animate-pulse">iii</li>
+            <li tw="h-12 grid place-items-center animate-pulse">iv</li>
+            <li tw="h-12 grid place-items-center animate-pulse">v</li>
+            <li tw="h-12 grid place-items-center animate-pulse">vi</li>
+          </>
         )}
       </ul>
     </nav>
