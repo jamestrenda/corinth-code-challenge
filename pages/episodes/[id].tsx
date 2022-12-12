@@ -29,6 +29,7 @@ export const getStaticProps: GetStaticProps<{
       films: char.films,
       filmData: char.filmData,
       starships: char.starships,
+      url: char.url,
     })
   );
   return {
