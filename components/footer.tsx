@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 export const Footer: React.FC = () => {
   return (
     <footer>
-      <figure tw="text-3xl font-serif italic text-gray-500 text-center mt-32 mb-5">
+      <figure tw="text-3xl font-serif italic text-gray-500 text-center my-32">
         <blockquote tw="mb-2">
           <p>"I find your lack of faith disturbing."</p>
         </blockquote>
