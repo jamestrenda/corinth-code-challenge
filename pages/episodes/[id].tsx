@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps<{
 
   const characters = Array.from(
     results.filter((result) =>
-      result.films.some((film) => film.endsWith(`/${params?.id}/`))
+      result.filmData.some((film) => film.episode_id.toString() === params?.id)
     ),
     (char) => ({
       name: char.name,
@@ -32,6 +32,7 @@ export const getStaticProps: GetStaticProps<{
       url: char.url,
     })
   );
+
   return {
     props: {
       characters,
