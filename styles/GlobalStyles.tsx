@@ -5,7 +5,7 @@ const CustomStyles = createGlobalStyle(
   {
     html: {
       ...tw`bg-gray-900`,
-      backgroundImage: `url(/matt-gross-9aCkSl6YcXg-unsplash.jpg)`,
+      backgroundImage: `url(/matt-gross-9aCkSl6YcXg-unsplash.webp)`,
       backgroundPosition: 'top left',
       backgroundRepeat: 'repeat',
       backgroundSize: '500px',
