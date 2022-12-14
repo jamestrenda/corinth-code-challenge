@@ -6,3 +6,4 @@ A coding challenge for Lifeway Christian Resources
 
 - Animate background with three.js and react-three-fiber
 - Add wookiee translate button
+- Improve Lighthouse performance score
