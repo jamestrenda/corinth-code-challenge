@@ -11,7 +11,7 @@ import { Person } from './profile';
 
 export type StateProps = {
   searchTerm: string;
-  characters: Person[] | null;
+  characters: Person[] | [];
   onChangeHandler?: ChangeEventHandler | undefined;
 };
 
@@ -50,7 +50,7 @@ const AppProvider: React.FC<{
 }> = ({ children }) => {
   const initialState = {
     searchTerm: '',
-    characters: null,
+    characters: [],
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);

@@ -1,13 +1,12 @@
+import React from 'react';
 import { Film } from 'lib/fetchFilms';
-import tw from 'twin.macro';
 import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
 import { getHeightInFeetAndInches } from 'utils/getHeightInFeetAndInches';
 import { getWeightInPounds } from 'utils/getWeightInPounds';
 import { ProfileSection } from './profileSection';
 import { ProfileSectionContent } from './profileSectionContent';
 import { ProfileSectionHeading } from './profileSectionHeading';
-
-import { motion, AnimatePresence } from 'framer-motion';
+import tw from 'twin.macro';
 
 export type Person = {
   name: string;
@@ -17,34 +16,29 @@ export type Person = {
   birth_year: string;
   species: string[];
   starships: string[];
-  filmData: Film[];
+  filmData: Film[] | [];
   films: string[];
   url?: string;
 };
 
-// TODO: fade in each profile card
+const Profile = React.forwardRef(
+  (props: Person, ref: React.Ref<HTMLElement>) => {
+    const {
+      name,
+      height,
+      mass,
+      hair_color,
+      birth_year,
+      species,
+      filmData,
+      starships,
+      url,
+    } = props;
 
-export const Profile: React.FC<Person> = (props) => {
-  const {
-    name,
-    height,
-    mass,
-    hair_color,
-    birth_year,
-    species,
-    filmData,
-    starships,
-    url,
-  } = props;
-
-  return (
-    <AnimatePresence mode="popLayout">
-      <motion.article
+    return (
+      <article
+        ref={ref}
         key={url}
-        layout
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 50 }}
         tw="relative text-white p-6 bg-gray-900 rounded-md [content: ''] lg:group-hover:[&:not(:hover)]:before:bg-gray-900/50 before:h-full before:w-full before:absolute before:left-0 before:right-0 before:top-0 before:bottom-0 before:transition-all"
       >
         <h2 tw="text-4xl italic text-gray-400 mb-4 font-serif [text-shadow: 5px 5px rgba(0,0,0,.5)]">
@@ -98,13 +92,17 @@ export const Profile: React.FC<Person> = (props) => {
           <ProfileSectionHeading heading="Starships Flown" />
           <ProfileSectionContent>
             {starships.length ? (
-              <p tw="[text-overflow: ellipsis] overflow-auto">{starships}</p>
+              <p tw="[text-overflow: ellipsis] overflow-auto">
+                {starships.join(', ')}
+              </p>
             ) : (
               'None'
             )}
           </ProfileSectionContent>
         </ProfileSection>
-      </motion.article>
-    </AnimatePresence>
-  );
-};
+      </article>
+    );
+  }
+);
+
+export default Profile;

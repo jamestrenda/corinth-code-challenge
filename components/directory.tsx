@@ -1,26 +1,106 @@
-import { Profile, Person } from './profile';
+import { Person } from './profile';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { AppContext, ReducerActionType } from './appStateProvider';
 import tw from 'twin.macro';
-import { useContext } from 'react';
-import { AppContext } from './appStateProvider';
+import { useRouter } from 'next/router';
+
+const Profile = React.lazy(() => import('./profile'));
 
 type Props = {
   characters: Person[];
 };
 
-export const Directory: React.FC<Props> = ({ characters }) => {
-  const { state } = useContext(AppContext);
-  const { searchTerm } = state;
+/**
+ *
+ * @param characters — full list of characters from SWAPI
+ * @returns a list of characters that are filtered by the search term or the first 9 characters if the search term is empty
+ */
 
-  const filteredCharacters = characters.filter((character) =>
-    character.name.toLocaleLowerCase().includes(searchTerm)
+export const Directory: React.FC<Props> = (props) => {
+  const { state, dispatch } = useContext(AppContext);
+  const { searchTerm, characters } = state;
+  const router = useRouter();
+
+  const perPage = 9;
+  const [charactersLoaded, setCharactersLoaded] = useState<Person[] | []>([]);
+  const [hasMore, setHasMore] = useState<Boolean>(false);
+
+  const observer = useRef<IntersectionObserver | null>(null);
+  const lastElementRef = useCallback(
+    (node: HTMLElement) => {
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          loadMore(
+            characters.slice(
+              charactersLoaded.length,
+              charactersLoaded.length + perPage
+            )
+          );
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [charactersLoaded, hasMore]
   );
+
+  useEffect(() => {
+    if (dispatch) {
+      dispatch({
+        type: ReducerActionType.SET_CHARACTERS,
+        payload: props.characters,
+      });
+    }
+  }, [router.query.id]);
+
+  useEffect(() => {
+    setCharactersLoaded(getFirstPage(characters));
+  }, [characters]);
+
+  useEffect(() => {
+    if (!searchTerm) {
+      setHasMore(charactersLoaded?.length < characters?.length);
+    }
+  }, [charactersLoaded]);
+
+  useEffect(() => {
+    if (searchTerm) {
+      setCharactersLoaded(filteredCharacters());
+      setHasMore(false);
+    } else {
+      setCharactersLoaded(getFirstPage(characters));
+      setHasMore(charactersLoaded?.length < characters?.length);
+    }
+  }, [searchTerm]);
+
+  const filteredCharacters = () =>
+    characters?.filter((character) =>
+      character.name.toLocaleLowerCase().includes(searchTerm)
+    );
+
+  const loadMore = (nextPage: Person[]) => {
+    setCharactersLoaded((prev) => {
+      setHasMore(charactersLoaded.length < characters.length);
+      return [...prev, ...nextPage];
+    });
+  };
+
+  const getFirstPage = (items: Person[] | []) => {
+    return items ? items.slice(0, 9) : [];
+  };
 
   return (
     <div
       tw="mt-3 grid sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-6xl m-auto"
       className="group"
     >
-      {filteredCharacters.map((char) => (
+      {charactersLoaded.map((char, index) => (
         <Profile
           key={char.url}
           name={char.name}
@@ -33,6 +113,7 @@ export const Directory: React.FC<Props> = ({ characters }) => {
           films={char.films}
           starships={char.starships}
           url={char.url}
+          ref={charactersLoaded.length === index + 1 ? lastElementRef : null}
         />
       ))}
     </div>
