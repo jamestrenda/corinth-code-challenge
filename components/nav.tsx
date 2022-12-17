@@ -42,12 +42,24 @@ export const Nav: React.FC = () => {
   return (
     <nav>
       <ul tw="flex gap-8 font-bold text-gray-500 justify-center items-center uppercase">
-        <li tw="h-12 grid place-items-center">i</li>
-        <li tw="h-12 grid place-items-center">ii</li>
-        <li tw="h-12 grid place-items-center">iii</li>
-        <li tw="h-12 grid place-items-center">iv</li>
-        <li tw="h-12 grid place-items-center">v</li>
-        <li tw="h-12 grid place-items-center">vi</li>
+        <StyledActiveLink activeClassName="active" href="/episodes/1">
+          <li tw="h-12 grid place-items-center">i</li>
+        </StyledActiveLink>
+        <StyledActiveLink activeClassName="active" href="/episodes/2">
+          <li tw="h-12 grid place-items-center">ii</li>
+        </StyledActiveLink>
+        <StyledActiveLink activeClassName="active" href="/episodes/3">
+          <li tw="h-12 grid place-items-center">iii</li>
+        </StyledActiveLink>
+        <StyledActiveLink activeClassName="active" href="/episodes/4">
+          <li tw="h-12 grid place-items-center">iv</li>
+        </StyledActiveLink>
+        <StyledActiveLink activeClassName="active" href="/episodes/5">
+          <li tw="h-12 grid place-items-center">v</li>
+        </StyledActiveLink>
+        <StyledActiveLink activeClassName="active" href="/episodes/6">
+          <li tw="h-12 grid place-items-center">vi</li>
+        </StyledActiveLink>
       </ul>
     </nav>
   );
