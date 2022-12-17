@@ -29,9 +29,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
         />
-        <meta name="description">
-          A Next.js site for querying Star Wars character data.
-        </meta>
+        <meta
+          name="description"
+          content="A Next.js site for querying Star Wars character data."
+        />
       </Head>
       <GlobalStyles />
       <AppProvider>
