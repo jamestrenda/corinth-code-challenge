@@ -42,24 +42,36 @@ export const Nav: React.FC = () => {
   return (
     <nav>
       <ul tw="flex gap-8 font-bold text-gray-500 justify-center items-center uppercase">
-        <StyledActiveLink activeClassName="active" href="/episodes/1">
-          <li tw="h-12 grid place-items-center">i</li>
-        </StyledActiveLink>
-        <StyledActiveLink activeClassName="active" href="/episodes/2">
-          <li tw="h-12 grid place-items-center">ii</li>
-        </StyledActiveLink>
-        <StyledActiveLink activeClassName="active" href="/episodes/3">
-          <li tw="h-12 grid place-items-center">iii</li>
-        </StyledActiveLink>
-        <StyledActiveLink activeClassName="active" href="/episodes/4">
-          <li tw="h-12 grid place-items-center">iv</li>
-        </StyledActiveLink>
-        <StyledActiveLink activeClassName="active" href="/episodes/5">
-          <li tw="h-12 grid place-items-center">v</li>
-        </StyledActiveLink>
-        <StyledActiveLink activeClassName="active" href="/episodes/6">
-          <li tw="h-12 grid place-items-center">vi</li>
-        </StyledActiveLink>
+        <li tw="h-12 grid place-items-center">
+          <StyledActiveLink activeClassName="active" href="/episodes/1">
+            i
+          </StyledActiveLink>
+        </li>
+        <li tw="h-12 grid place-items-center">
+          <StyledActiveLink activeClassName="active" href="/episodes/2">
+            ii
+          </StyledActiveLink>
+        </li>
+        <li tw="h-12 grid place-items-center">
+          <StyledActiveLink activeClassName="active" href="/episodes/3">
+            iii
+          </StyledActiveLink>
+        </li>
+        <li tw="h-12 grid place-items-center">
+          <StyledActiveLink activeClassName="active" href="/episodes/4">
+            iv
+          </StyledActiveLink>
+        </li>
+        <li tw="h-12 grid place-items-center">
+          <StyledActiveLink activeClassName="active" href="/episodes/5">
+            v
+          </StyledActiveLink>
+        </li>
+        <li tw="h-12 grid place-items-center">
+          <StyledActiveLink activeClassName="active" href="/episodes/6">
+            vi
+          </StyledActiveLink>
+        </li>
       </ul>
     </nav>
   );
