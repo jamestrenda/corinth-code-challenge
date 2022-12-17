@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps<{
 }> = async (context) => {
   const { params } = context;
 
-  const { results } = await fetchPeople();
+  const results = await fetchPeople();
 
   const characters = Array.from(
     results.filter((result) =>

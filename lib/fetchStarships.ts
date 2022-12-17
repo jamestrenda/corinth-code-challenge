@@ -4,12 +4,10 @@ export type Starships = {
   name: string;
   url: string;
 };
-interface IStarshipsResource extends IResource {
+export interface IStarshipsResource extends IResource {
   results: Starships[];
 }
-export const fetchSpecies = async (
-  endpoint: string
-): Promise<IStarshipsResource> => {
+export const fetchStarships = async (): Promise<IStarshipsResource> => {
   // setup an array to store the people from each request
   let results: Starships[] = [];
 

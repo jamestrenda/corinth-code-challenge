@@ -4,12 +4,10 @@ export type Species = {
   name: string;
   url: string;
 };
-interface ISpeciesResource extends IResource {
+export interface ISpeciesResource extends IResource {
   results: Species[];
 }
-export const fetchSpecies = async (
-  endpoint: string
-): Promise<ISpeciesResource> => {
+export const fetchSpecies = async (): Promise<ISpeciesResource> => {
   // setup an array to store the people from each request
   let results: Species[] = [];
 

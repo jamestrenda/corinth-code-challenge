@@ -10,7 +10,7 @@ export default function Home({ characters }: { characters: Person[] }) {
 export const getStaticProps: GetStaticProps<{
   characters: Person[];
 }> = async () => {
-  const { results } = await fetchPeople();
+  const results = await fetchPeople();
 
   return {
     props: {

@@ -1,5 +1,5 @@
 import { IResource } from 'types/swapi';
-interface IFilmResource extends IResource {
+export interface IFilmResource extends IResource {
   results: Film[];
 }
 

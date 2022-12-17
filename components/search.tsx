@@ -2,17 +2,17 @@ import { ChangeEvent, useContext } from 'react';
 import { AppContext, ReducerActionType } from './appStateProvider';
 import tw from 'twin.macro';
 
-// TODO: add hover/focus states to input
 export const Search: React.FC = () => {
   const { state, dispatch } = useContext(AppContext);
   const handleSearch = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
 
-    dispatch &&
+    if (dispatch) {
       dispatch({
         type: ReducerActionType.SET_SEARCH_TERM,
         payload: value.toLocaleLowerCase(),
       });
+    }
   };
   return (
     <div tw="max-w-lg m-auto">

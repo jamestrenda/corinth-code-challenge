@@ -33,9 +33,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       <AppProvider>
         <Layout>
-          <ErrorBoundary>
-            <Component {...pageProps} />
-          </ErrorBoundary>
+          <Component {...pageProps} />
         </Layout>
       </AppProvider>
     </>
