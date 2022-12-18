@@ -21,7 +21,7 @@ type Props = {
 /**
  *
  * @param characters — full list of characters from SWAPI
- * @returns a list of characters that are filtered by the search term or the first 9 characters if the search term is empty
+ * @returns a list of characters that are filtered by the search term or the first perPage characters if the search term is empty
  */
 
 export const Directory: React.FC<Props> = (props) => {
@@ -29,7 +29,7 @@ export const Directory: React.FC<Props> = (props) => {
   const { searchTerm, characters } = state;
   const router = useRouter();
 
-  const perPage = 9;
+  const perPage = 6;
   const [charactersLoaded, setCharactersLoaded] = useState<Person[] | []>([]);
   const [hasMore, setHasMore] = useState<Boolean>(false);
 
@@ -94,7 +94,7 @@ export const Directory: React.FC<Props> = (props) => {
   };
 
   const getFirstPage = (items: Person[] | []) => {
-    return items ? items.slice(0, 9) : [];
+    return items ? items.slice(0, perPage) : [];
   };
 
   return (
@@ -106,7 +106,7 @@ export const Directory: React.FC<Props> = (props) => {
         className="group"
       >
         {!characters.length
-          ? Array(9)
+          ? Array(perPage)
               .fill('')
               .map((item, index) => <ProfileSkeleton key={index} />)
           : charactersLoaded.map((char, index) => (
