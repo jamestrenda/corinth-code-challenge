@@ -10,7 +10,7 @@ import { AppContext, ReducerActionType } from './appStateProvider';
 import tw from 'twin.macro';
 import { useRouter } from 'next/router';
 import ProfileSkeleton from './profileSkeleton';
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 const Profile = React.lazy(() => import('./profile'));
 
@@ -98,34 +98,36 @@ export const Directory: React.FC<Props> = (props) => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      tw="mt-3 grid sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-6xl m-auto"
-      className="group"
-    >
-      {!characters.length
-        ? Array(9)
-            .fill('')
-            .map((item, index) => <ProfileSkeleton key={index} />)
-        : charactersLoaded.map((char, index) => (
-            <Profile
-              key={char.url}
-              name={char.name}
-              height={char.height}
-              mass={char.mass}
-              hair_color={char.hair_color}
-              birth_year={char.birth_year}
-              species={char.species}
-              filmData={char.filmData}
-              films={char.films}
-              starships={char.starships}
-              url={char.url}
-              ref={
-                charactersLoaded.length === index + 1 ? lastElementRef : null
-              }
-            />
-          ))}
-    </motion.div>
+    <LazyMotion features={domAnimation}>
+      <m.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        tw="mt-3 grid sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-6xl m-auto"
+        className="group"
+      >
+        {!characters.length
+          ? Array(9)
+              .fill('')
+              .map((item, index) => <ProfileSkeleton key={index} />)
+          : charactersLoaded.map((char, index) => (
+              <Profile
+                key={char.url}
+                name={char.name}
+                height={char.height}
+                mass={char.mass}
+                hair_color={char.hair_color}
+                birth_year={char.birth_year}
+                species={char.species}
+                filmData={char.filmData}
+                films={char.films}
+                starships={char.starships}
+                url={char.url}
+                ref={
+                  charactersLoaded.length === index + 1 ? lastElementRef : null
+                }
+              />
+            ))}
+      </m.div>
+    </LazyMotion>
   );
 };
