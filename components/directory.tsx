@@ -107,7 +107,7 @@ export const Directory: React.FC<Props> = (props) => {
       {!characters.length
         ? Array(9)
             .fill('')
-            .map((item) => <ProfileSkeleton />)
+            .map((item, index) => <ProfileSkeleton key={index} />)
         : charactersLoaded.map((char, index) => (
             <Profile
               key={char.url}
