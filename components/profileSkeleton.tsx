@@ -1,4 +1,24 @@
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
+
+const StyledSection = styled.div`
+  ${tw`mt-4`},
+`;
+const StyledHeadingContainer = styled.div`
+  ${tw`h-4 grid items-center mb-1`},
+`;
+const StyledShortLine = styled.div`
+  ${tw`py-1 w-20 bg-slate-600 rounded-md`},
+`;
+const StyledAboutMeLine = styled.div`
+  ${tw`py-1 w-32 bg-slate-600 rounded-md`},
+`;
+const StyledMediumLine = styled.div`
+  ${tw`py-1 w-36 bg-slate-600 rounded-md`},
+`;
+
+const StyledAtrributes = styled.div`
+  ${tw`py-1.5 flex items-center space-x-4`};
+`;
 
 const ProfileSkeleton = () => {
   return (
@@ -10,68 +30,62 @@ const ProfileSkeleton = () => {
           <div tw="flex-1 py-1 bg-slate-600 rounded-md"></div>
         </div>
         {/* About Me */}
-        <div tw="mt-4">
+        <StyledSection>
           {/* Heading */}
-          <div tw="h-4 grid items-center mb-1">
-            <div tw="py-1 w-20 bg-slate-600 rounded-md"></div>
-          </div>
+          <StyledHeadingContainer>
+            <StyledShortLine />
+          </StyledHeadingContainer>
           {/* Attributes */}
-          <div>
-            <div tw="py-1.5 flex space-x-12 items-center">
-              <div tw="py-1 w-32 bg-slate-600 rounded-md"></div>
-              <div tw="py-1 w-32 bg-slate-600 rounded-md"></div>
-            </div>
-            <div tw="py-1.5 flex space-x-12 items-center">
-              <div tw="py-1 w-32 bg-slate-600 rounded-md"></div>
-              <div tw="py-1 w-32 bg-slate-600 rounded-md"></div>
-            </div>
-            <div tw="py-1.5 grid items-center">
-              <div tw="py-1 w-32 bg-slate-600 rounded-md"></div>
-            </div>
-          </div>
-        </div>
+          <StyledAtrributes>
+            <StyledAboutMeLine />
+            <StyledAboutMeLine />
+          </StyledAtrributes>
+          <StyledAtrributes>
+            <StyledAboutMeLine />
+            <StyledAboutMeLine />
+          </StyledAtrributes>
+          <StyledAtrributes>
+            <StyledAboutMeLine />
+          </StyledAtrributes>
+        </StyledSection>
         {/* Films */}
-        <div tw="mt-4">
+        <StyledSection>
           {/* Heading */}
-          <div tw="h-4 grid items-center mb-1">
-            <div tw="py-1 w-20 bg-slate-600 rounded-md"></div>
-          </div>
+          <StyledHeadingContainer>
+            <StyledShortLine />
+          </StyledHeadingContainer>
           {/* Attributes */}
-          <div>
-            <div tw="py-1.5 grid items-center">
-              <div tw="py-1 w-36 bg-slate-600 rounded-md"></div>
-            </div>
-            <div tw="py-1.5 grid items-center">
-              <div tw="py-1 w-36 bg-slate-600 rounded-md"></div>
-            </div>
-            <div tw="py-1.5 grid items-center">
-              <div tw="py-1 w-36 bg-slate-600 rounded-md"></div>
-            </div>
-            <div tw="py-1.5 grid items-center">
-              <div tw="py-1 w-36 bg-slate-600 rounded-md"></div>
-            </div>
-            <div tw="py-1.5 grid items-center">
-              <div tw="py-1 w-36 bg-slate-600 rounded-md"></div>
-            </div>
-            <div tw="py-1.5 grid items-center">
-              <div tw="py-1 w-36 bg-slate-600 rounded-md"></div>
-            </div>
-          </div>
-        </div>
-        <div tw="mt-4">
+          <StyledAtrributes>
+            <StyledMediumLine />
+          </StyledAtrributes>
+          <StyledAtrributes>
+            <StyledMediumLine />
+          </StyledAtrributes>
+          <StyledAtrributes>
+            <StyledMediumLine />
+          </StyledAtrributes>
+          <StyledAtrributes>
+            <StyledMediumLine />
+          </StyledAtrributes>
+          <StyledAtrributes>
+            <StyledMediumLine />
+          </StyledAtrributes>
+          <StyledAtrributes>
+            <StyledMediumLine />
+          </StyledAtrributes>
+        </StyledSection>
+        <StyledSection>
           {/* Heading */}
-          <div tw="h-4 grid items-center mb-1">
-            <div tw="py-1 w-20 bg-slate-600 rounded-md"></div>
-          </div>
+          <StyledHeadingContainer>
+            <StyledShortLine />
+          </StyledHeadingContainer>
           {/* Attributes */}
-          <div>
-            <div tw="py-1.5 flex space-x-4 items-center">
-              <span tw="py-1 w-20 bg-slate-600 rounded-md"></span>
-              <span tw="py-1 w-36 bg-slate-600 rounded-md"></span>
-              <span tw="py-1 w-20 bg-slate-600 rounded-md"></span>
-            </div>
-          </div>
-        </div>
+          <StyledAtrributes>
+            <StyledShortLine />
+            <StyledMediumLine />
+            <StyledShortLine />
+          </StyledAtrributes>
+        </StyledSection>
       </div>
     </div>
   );
