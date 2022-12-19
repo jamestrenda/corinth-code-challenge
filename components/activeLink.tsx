@@ -50,7 +50,7 @@ const ActiveLink = ({
   ]);
 
   return (
-    <Link className={computedClassName} href={props.href}>
+    <Link className={computedClassName} href={props.href} prefetch={false}>
       {children}
     </Link>
   );
