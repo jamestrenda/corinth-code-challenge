@@ -22,7 +22,7 @@ export const Nav: React.FC = () => {
     <nav>
       <ul tw="flex gap-8 font-bold text-gray-500 justify-center items-center uppercase">
         {episodes.map((episode) => (
-          <li tw="h-12 grid place-items-center">
+          <li key={`episode-${episode.id}`} tw="h-12 grid place-items-center">
             <StyledActiveLink
               activeClassName="active"
               href={`/episodes/${episode.id}`}
