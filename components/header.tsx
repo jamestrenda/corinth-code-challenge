@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import tw from 'twin.macro';
+import 'twin.macro';
 import { Nav } from './nav';
 import { Search } from './search';
 

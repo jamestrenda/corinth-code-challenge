@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react';
 import { AppContext, ReducerActionType } from './appStateProvider';
-import tw from 'twin.macro';
+import 'twin.macro';
 import { useRouter } from 'next/router';
 import ProfileSkeleton from './profileSkeleton';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
@@ -105,7 +105,7 @@ export const Directory: React.FC<Props> = (props) => {
         tw="mt-3 grid sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-6xl m-auto"
         className="group"
       >
-        {!characters.length
+        {characters.length
           ? Array(perPage)
               .fill('')
               .map((item, index) => <ProfileSkeleton key={index} />)

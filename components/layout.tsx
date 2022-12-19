@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Footer } from './footer';
 import { Header } from './header';
-import tw from 'twin.macro';
+import 'twin.macro';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (

@@ -6,7 +6,7 @@ import { getWeightInPounds } from 'utils/getWeightInPounds';
 import { ProfileSection } from './profileSection';
 import { ProfileSectionContent } from './profileSectionContent';
 import { ProfileSectionHeading } from './profileSectionHeading';
-import tw from 'twin.macro';
+import 'twin.macro';
 
 export type Person = {
   name: string;
