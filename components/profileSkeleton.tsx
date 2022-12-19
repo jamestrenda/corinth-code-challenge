@@ -1,6 +1,3 @@
-import { ProfileSection } from './profileSection';
-import { ProfileSectionContent } from './profileSectionContent';
-import { ProfileSectionHeading } from './profileSectionHeading';
 import tw from 'twin.macro';
 
 const ProfileSkeleton = () => {
