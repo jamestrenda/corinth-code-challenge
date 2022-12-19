@@ -1,7 +1,4 @@
 import tw, { styled } from 'twin.macro';
-import { getRomanNumeral } from '../utils/getRomanNumeral';
-import { fetchFilms } from 'lib/fetchFilms';
-import { useEffect, useState } from 'react';
 import ActiveLink from './activeLink';
 
 type Paths = {
