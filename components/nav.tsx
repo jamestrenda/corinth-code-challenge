@@ -1,10 +1,15 @@
 import tw, { styled } from 'twin.macro';
+import { getRomanNumeral } from 'utils/getRomanNumeral';
 import ActiveLink from './activeLink';
 
-type Paths = {
-  id: string;
-  roman: string;
-};
+export const episodes = [
+  { id: 1 },
+  { id: 2 },
+  { id: 3 },
+  { id: 4 },
+  { id: 5 },
+  { id: 6 },
+];
 
 const StyledActiveLink = styled(ActiveLink)`
   &.active {
@@ -16,36 +21,16 @@ export const Nav: React.FC = () => {
   return (
     <nav>
       <ul tw="flex gap-8 font-bold text-gray-500 justify-center items-center uppercase">
-        <li tw="h-12 grid place-items-center">
-          <StyledActiveLink activeClassName="active" href="/episodes/1">
-            i
-          </StyledActiveLink>
-        </li>
-        <li tw="h-12 grid place-items-center">
-          <StyledActiveLink activeClassName="active" href="/episodes/2">
-            ii
-          </StyledActiveLink>
-        </li>
-        <li tw="h-12 grid place-items-center">
-          <StyledActiveLink activeClassName="active" href="/episodes/3">
-            iii
-          </StyledActiveLink>
-        </li>
-        <li tw="h-12 grid place-items-center">
-          <StyledActiveLink activeClassName="active" href="/episodes/4">
-            iv
-          </StyledActiveLink>
-        </li>
-        <li tw="h-12 grid place-items-center">
-          <StyledActiveLink activeClassName="active" href="/episodes/5">
-            v
-          </StyledActiveLink>
-        </li>
-        <li tw="h-12 grid place-items-center">
-          <StyledActiveLink activeClassName="active" href="/episodes/6">
-            vi
-          </StyledActiveLink>
-        </li>
+        {episodes.map((episode) => (
+          <li tw="h-12 grid place-items-center">
+            <StyledActiveLink
+              activeClassName="active"
+              href={`/episodes/${episode.id}`}
+            >
+              {getRomanNumeral(episode.id)}
+            </StyledActiveLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
