@@ -4,10 +4,9 @@ import GlobalStyles from '@/styles/GlobalStyles';
 import { Layout } from '@/components/layout';
 import { AppProvider } from '@/components/appStateProvider';
 import Head from 'next/head';
-import ErrorBoundary from '@/components/error';
-import '../styles/nprogress.css';
 import { useRouter } from 'next/router';
 import NProgress from 'nprogress';
+import '../styles/nprogress.css';
 
 NProgress.configure({ showSpinner: false });
 
